@@ -6,11 +6,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next export"
   },
   "author": "Alex Tou",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "gray-matter": "^4.0.2",
     "next": "^10.0.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"

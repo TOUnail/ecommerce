@@ -8,14 +8,17 @@ const UnstyledLink = styled.a`
   }
 `;
 const Nav = styled.nav`
-  background: red;
-  padding: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
 `;
 const Navbar = () => {
   return (
     <Nav>
       <Link href="/">
         <UnstyledLink>Logo</UnstyledLink>
+      </Link>
+      <Link href="/products">
+        <UnstyledLink>Products</UnstyledLink>
       </Link>
     </Nav>
   );

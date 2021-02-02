@@ -1,11 +1,10 @@
-import Link from "next/link";
 const Homepage = () => {
   return (
     <div>
-      <Link href="/products">
-        <a>Products</a>
-      </Link>
-      <h1>Homepage</h1>
+      <h1>Paracord Cables</h1>
+      <div>Homepage banner</div>
+      <div>Most Popular Products</div>
+      <div>Categories or Collections</div>
     </div>
   );
 };

@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { Normalize } from "styled-normalize";
 import Navbar from "../components/Navbar";
 const Container = styled.div`
-  background: #efefef;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 `;
 const App = ({ Component, pageProps }) => (
   <Container>

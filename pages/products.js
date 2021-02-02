@@ -3,18 +3,26 @@ import fs from "fs";
 import matter from "gray-matter";
 import styled from "styled-components";
 const Container = styled.div`
-  background: #ffffff;
+  display: flex;
+`;
+const Column = styled.div`
+  width: 25%;
+  border: 1px solid #000;
 `;
 const Products = (props) => {
-  return props.products.map((product) => (
-    <Container key={product.slug}>
-      <Link href={product.slug}>
-        <a>{product.name}</a>
-      </Link>
-      <div>{product.description}</div>
-      <div>${product.price / 100}</div>
+  return (
+    <Container>
+      {props.products.map((product) => (
+        <Column key={product.slug}>
+          <Link href={product.slug}>
+            <a>{product.name}</a>
+          </Link>
+          <div>{product.description}</div>
+          <div>${product.price / 100}</div>
+        </Column>
+      ))}
     </Container>
-  ));
+  );
 };
 export const getStaticProps = async () => {
   const directory = `${process.cwd()}/content`;

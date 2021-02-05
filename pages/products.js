@@ -4,10 +4,15 @@ import matter from "gray-matter";
 import styled from "styled-components";
 const Container = styled.div`
   display: flex;
+  width: 90%;
+  margin: 0 auto;
 `;
 const Column = styled.div`
   width: 25%;
+  margin: 15px;
+  padding: 1rem;
   border: 1px solid #000;
+  border-radius: 35px;
 `;
 const Products = (props) => {
   return (

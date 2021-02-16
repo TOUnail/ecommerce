@@ -2,6 +2,7 @@
 name: Product 1
 description: Description of Product 1
 price: 1999
+image: /paracord-striped.jpg
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel convallis nibh. Duis luctus nulla sit amet nibh tempus porta. Nulla eleifend odio a dapibus gravida.

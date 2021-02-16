@@ -1,13 +1,15 @@
 import Link from "next/link";
 import styled from "styled-components";
 const LogoText = styled.h1`
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
   display: inline;
   font-family: "Montserrat", sans-serif;
-  font-weight: 100;
-  font-size: inherit;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  margin-left: 0.5rem;
 `;
 const LogoLink = styled.a`
+  display: flex;
+  align-items: center;
   text-decoration: none;
   text-transform: uppercase;
   &:hover {
@@ -33,6 +35,7 @@ const NavItems = styled.ul`
   justify-content: space-evenly;
   padding: 0;
   list-style: none;
+  font-weight: 500;
 `;
 const NavItem = styled.li`
   padding: 0.25rem 0.75rem;

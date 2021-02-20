@@ -2,6 +2,7 @@ import styled from "styled-components";
 import GlobalStyle from "../theme/globalStyle";
 import { Normalize } from "styled-normalize";
 import Navbar from "../components/Navbar";
+import CartProvider from "../context/Cart";
 // https://iconduck.com/
 
 const Container = styled.div`
@@ -11,12 +12,14 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 const App = ({ Component, pageProps }) => (
-  <Container>
-    <Normalize />
-    <GlobalStyle />
-    <Navbar />
-    <Component {...pageProps} />
-    <div>footer</div>
-  </Container>
+  <CartProvider>
+    <Container>
+      <Normalize />
+      <GlobalStyle />
+      <Navbar />
+      <Component {...pageProps} />
+      <div>footer</div>
+    </Container>
+  </CartProvider>
 );
 export default App;

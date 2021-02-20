@@ -3,6 +3,7 @@ import Image from "next/image";
 import fs from "fs";
 import matter from "gray-matter";
 import styled from "styled-components";
+import useCart from "../hooks/useCart";
 const Header = styled.div`
   width: 100vw;
   margin: 0 auto;
@@ -46,6 +47,8 @@ const Card = styled.div`
   background-color: #fff;
 `;
 const Products = (props) => {
+  const { cart, addToCart } = useCart();
+  console.log(cart);
   return (
     <>
       <Header>
@@ -78,6 +81,7 @@ const Products = (props) => {
               </Link>
               <div>{product.description}</div>
               <div>${product.price / 100}</div>
+              <button onClick={() => addToCart(product.id)}>Add to cart</button>
             </Card>
           ))}
         </Listings>

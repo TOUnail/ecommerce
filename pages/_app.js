@@ -3,6 +3,7 @@ import GlobalStyle from "../theme/globalStyle";
 import { Normalize } from "styled-normalize";
 import Navbar from "../components/Navbar";
 import CartProvider from "../context/Cart";
+import Cart from "../components/Cart";
 // https://iconduck.com/
 
 const Container = styled.div`
@@ -20,6 +21,7 @@ const App = ({ Component, pageProps }) => (
       <Component {...pageProps} />
       <div>footer</div>
     </Container>
+    <Cart />
   </CartProvider>
 );
 export default App;

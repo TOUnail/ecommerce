@@ -81,7 +81,7 @@ const Products = (props) => {
               </Link>
               <div>{product.description}</div>
               <div>${product.price / 100}</div>
-              <button onClick={() => addToCart(product.id)}>Add to cart</button>
+              <button onClick={() => addToCart(product)}>Add to cart</button>
             </Card>
           ))}
         </Listings>

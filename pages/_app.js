@@ -11,6 +11,7 @@ const Container = styled.div`
   grid-template-rows: auto 1fr auto;
   max-width: 2148px;
   margin: 0 auto;
+  min-height: 100vh;
 `;
 const App = ({ Component, pageProps }) => (
   <CartProvider>

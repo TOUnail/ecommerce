@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import useCart from "../hooks/useCart";
+import { useRouter } from "next/router";
 const Container = styled.div`
   position: fixed;
   top: 0;
@@ -53,9 +54,14 @@ const CheckoutBtn = styled.button`
   padding: 1rem 0;
 `;
 const Cart = () => {
-  const { cart, isOpen, openCart, closeCart } = useCart();
+  const router = useRouter();
+  const { cart, isOpen, closeCart, total } = useCart();
   const handleClick = () => {
     closeCart();
+  };
+  const toCheckoutPage = () => {
+    closeCart();
+    router.push("/checkout");
   };
   return (
     <Container isOpen={isOpen}>
@@ -73,24 +79,30 @@ const Cart = () => {
           </svg>
         </Close>
       </Header>
-      <div>
-        <ItemList>
-          {cart.map((product) => {
-            return (
-              <Item key={product.id}>
-                <span>{product.name}</span>
-                <span>{product.qty}</span>
-                <span>${product.price / 100}</span>
-              </Item>
-            );
-          })}
-        </ItemList>
-      </div>
-      <Total>
-        <span>Total</span>
-        <span>$2304</span>
-      </Total>
-      <CheckoutBtn>Checkout</CheckoutBtn>
+      {cart.length > 0 ? (
+        <>
+          <div>
+            <ItemList>
+              {cart.map((product) => {
+                return (
+                  <Item key={product.id}>
+                    <span>{product.name}</span>
+                    <span>{product.qty}</span>
+                    <span>${product.price / 100}</span>
+                  </Item>
+                );
+              })}
+            </ItemList>
+          </div>
+          <Total>
+            <span>Total</span>
+            <span>${total / 100}</span>
+          </Total>
+          <CheckoutBtn onClick={toCheckoutPage}>Checkout</CheckoutBtn>
+        </>
+      ) : (
+        <p>Empty Cart</p>
+      )}
     </Container>
   );
 };

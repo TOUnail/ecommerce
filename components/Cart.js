@@ -39,6 +39,8 @@ const ItemList = styled.ul`
 const Item = styled.li`
   list-style: none;
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
 `;
 const Total = styled.div`
   display: flex;
@@ -55,7 +57,7 @@ const CheckoutBtn = styled.button`
 `;
 const Cart = () => {
   const router = useRouter();
-  const { cart, isOpen, closeCart, total } = useCart();
+  const { cart, isOpen, closeCart, total, removeFromCart } = useCart();
   const handleClick = () => {
     closeCart();
   };
@@ -86,9 +88,16 @@ const Cart = () => {
               {cart.map((product) => {
                 return (
                   <Item key={product.id}>
-                    <span>{product.name}</span>
-                    <span>{product.qty}</span>
-                    <span>${product.price / 100}</span>
+                    <div>
+                      <span>{product.name}</span>
+                      <span>{product.qty}</span>
+                      <span>${product.price / 100}</span>
+                    </div>
+                    <div>
+                      <button onClick={() => removeFromCart(product.id)}>
+                        X
+                      </button>
+                    </div>
                   </Item>
                 );
               })}

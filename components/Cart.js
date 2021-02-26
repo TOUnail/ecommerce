@@ -1,5 +1,7 @@
+import { useRef } from "react";
 import styled from "styled-components";
 import useCart from "../hooks/useCart";
+import useOutsideClick from "../hooks/useOutsideClick";
 import { useRouter } from "next/router";
 const Container = styled.div`
   position: fixed;
@@ -57,6 +59,7 @@ const CheckoutBtn = styled.button`
 `;
 const Cart = () => {
   const router = useRouter();
+  const ref = useRef();
   const { cart, isOpen, closeCart, total, removeFromCart } = useCart();
   const handleClick = () => {
     closeCart();
@@ -65,8 +68,13 @@ const Cart = () => {
     closeCart();
     router.push("/checkout");
   };
+  useOutsideClick(ref, () => {
+    if (isOpen) {
+      closeCart();
+    }
+  });
   return (
-    <Container isOpen={isOpen}>
+    <Container ref={ref} isOpen={isOpen}>
       <Header>
         <div>My Cart</div>
         <Close onClick={handleClick}>

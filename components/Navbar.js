@@ -1,6 +1,28 @@
+import { useState } from "react";
 import Link from "next/link";
+import NavItems from "./NavItems";
 import styled from "styled-components";
 import useCart from "../hooks/useCart";
+const MobileMenu = styled.button`
+  color: #333;
+  background: transparent;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+  }
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+const Logo = styled.div`
+  text-align: center;
+  @media (min-width: 768px) {
+    text-align: left;
+  }
+`;
 const LogoText = styled.h1`
   display: inline;
   font-family: "Montserrat", sans-serif;
@@ -17,30 +39,14 @@ const LogoLink = styled.a`
     cursor: pointer;
   }
 `;
-const UnstyledLink = styled.a`
-  text-decoration: none;
-  color: inherit;
-  margin: 0 1rem;
-  &:hover {
-    cursor: pointer;
-  }
-`;
+
 const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.2rem 1rem;
 `;
-const NavItems = styled.ul`
-  display: flex;
-  justify-content: space-evenly;
-  padding: 0;
-  list-style: none;
-  font-weight: 500;
-`;
-const NavItem = styled.li`
-  padding: 0.25rem 0.75rem;
-`;
+
 const Cart = styled.button`
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 50%;
@@ -54,13 +60,33 @@ const Cart = styled.button`
   }
 `;
 const Navbar = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const { openCart } = useCart();
-  const handleClick = () => {
+  const handleCartClick = () => {
     openCart();
+  };
+  const handleMenuClick = () => {
+    setIsNavOpen(true);
   };
   return (
     <Nav>
-      <div>
+      <MobileMenu onClick={handleMenuClick}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="15"
+          viewBox="0 0 15 15"
+          fill="none"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M15 4H0V3H15V4ZM15 8H0V7H15V8ZM15 12H0V11H15V12Z"
+            fill="black"
+          />
+        </svg>
+      </MobileMenu>
+      <Logo>
         <Link href="/">
           <LogoLink>
             <svg
@@ -76,21 +102,10 @@ const Navbar = () => {
             <LogoText>Paramice</LogoText>
           </LogoLink>
         </Link>
-      </div>
-      <NavItems>
-        <NavItem>
-          <Link href="/products">
-            <UnstyledLink>Products</UnstyledLink>
-          </Link>
-        </NavItem>
-        <NavItem>
-          <Link href="/installation">
-            <UnstyledLink>Installation</UnstyledLink>
-          </Link>
-        </NavItem>
-      </NavItems>
+      </Logo>
+      <NavItems isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
       <div>
-        <Cart onClick={handleClick}>
+        <Cart onClick={handleCartClick}>
           <svg
             width="15"
             height="15"

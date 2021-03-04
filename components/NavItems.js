@@ -18,7 +18,7 @@ const NavItemsUl = styled.ul`
   font-weight: 500;
   @media (max-width: 767px) {
     position: fixed;
-    left: 0;
+    left: -100%;
     top: 0;
     bottom: 0;
     width: 60vw;
@@ -26,7 +26,7 @@ const NavItemsUl = styled.ul`
     justify-content: start;
     background-color: red;
     margin: 0;
-    transform: translateX(${(props) => (props.isNavOpen ? "0" : "-100%")});
+    transform: translateX(${(props) => (props.isNavOpen ? "161%" : "0")});
     transition: transform 0.2s ease-in;
   }
 `;
@@ -63,12 +63,12 @@ const NavItems = (props) => {
       <CloseNavButtonListItem>
         <CloseNavButton onClick={closeMenu}>X</CloseNavButton>
       </CloseNavButtonListItem>
-      <NavItem>
+      <NavItem onClick={closeMenu}>
         <Link href="/products">
           <UnstyledLink>Products</UnstyledLink>
         </Link>
       </NavItem>
-      <NavItem>
+      <NavItem onClick={closeMenu}>
         <Link href="/installation">
           <UnstyledLink>Installation</UnstyledLink>
         </Link>

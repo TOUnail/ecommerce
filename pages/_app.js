@@ -13,6 +13,9 @@ const Container = styled.div`
   margin: 0 auto;
   min-height: 100vh;
 `;
+const Footer = styled.div`
+  padding: 4rem 0;
+`;
 const App = ({ Component, pageProps }) => (
   <CartProvider>
     <Container>
@@ -20,7 +23,7 @@ const App = ({ Component, pageProps }) => (
       <GlobalStyle />
       <Navbar />
       <Component {...pageProps} />
-      <div>footer</div>
+      <Footer>Copyright Paramice 2021</Footer>
     </Container>
     <Cart />
   </CartProvider>

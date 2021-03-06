@@ -4,31 +4,38 @@ import fs from "fs";
 import matter from "gray-matter";
 import styled from "styled-components";
 import useCart from "../hooks/useCart";
-const Header = styled.div`
-  width: 100vw;
-  margin: 0 auto;
-  @media (min-width: 1280px) {
-    width: 1300px;
-  }
-`;
-const Banner = styled.div`
-  padding: 3rem;
-  background-color: #eee;
-  border-radius: 35px;
-`;
+// const Header = styled.div`
+//   width: 100%;
+//   margin: 0 auto;
+//   @media (min-width: 1280px) {
+//     width: 1200px;
+//   }
+// `;
 const Container = styled.div`
-  width: 100vw;
-  margin: -3rem auto 0;
+  padding: 0 1rem;
   @media (min-width: 1280px) {
+    margin: 0 auto;
     width: 1200px;
   }
 `;
+const Banner = styled.div`
+  padding: 3rem 1rem;
+  background-color: #eee;
+  border-radius: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 const Listings = styled.div`
-  --min: 15ch;
+  --min: 30ch;
   --gap: 1rem;
   display: grid;
   grid-gap: var(--gap);
   grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+  margin-top: -3rem;
+  @media (min-width: 1280px) {
+    padding: 0 3rem;
+  }
 `;
 // const Card = styled.div`
 //   padding: 1rem;
@@ -48,19 +55,14 @@ const Card = styled.div`
 `;
 const Products = (props) => {
   const { cart, addToCart } = useCart();
-  console.log(cart);
   return (
     <>
-      <Header>
-        <Banner>
-          <Listings>
-            <div>breadcrumbs</div>
-            <div>Title</div>
-            <div>Showing results</div>
-          </Listings>
-        </Banner>
-      </Header>
       <Container>
+        <Banner>
+          <div>breadcrumbs</div>
+          <h2>Products</h2>
+          <div>Showing results</div>
+        </Banner>
         <Listings>
           {props.products.map((product) => (
             <Card key={product.slug}>

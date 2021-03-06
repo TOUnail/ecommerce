@@ -28,6 +28,7 @@ const NavItemsUl = styled.ul`
     margin: 0;
     transform: translateX(${(props) => (props.isNavOpen ? "161%" : "0")});
     transition: transform 0.2s ease-in;
+    z-index: 1;
   }
 `;
 const CloseNavButtonListItem = styled.li`
@@ -60,8 +61,18 @@ const NavItems = (props) => {
   });
   return (
     <NavItemsUl ref={ref} isNavOpen={props.isNavOpen}>
-      <CloseNavButtonListItem>
-        <CloseNavButton onClick={closeMenu}>X</CloseNavButton>
+      <CloseNavButtonListItem style={{ textAlign: "right" }}>
+        <CloseNavButton onClick={closeMenu}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+          >
+            <path d="M1.5 1.5L13.5 13.5M1.5 13.5L13.5 1.5" stroke="black" />
+          </svg>
+        </CloseNavButton>
       </CloseNavButtonListItem>
       <NavItem onClick={closeMenu}>
         <Link href="/products">

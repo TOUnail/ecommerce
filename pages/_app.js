@@ -23,7 +23,7 @@ const App = ({ Component, pageProps }) => (
       <GlobalStyle />
       <Navbar />
       <Component {...pageProps} />
-      <Footer>Copyright Paramice 2021</Footer>
+      <Footer>&copy; Copyright Paramice 2021</Footer>
     </Container>
     <Cart />
   </CartProvider>

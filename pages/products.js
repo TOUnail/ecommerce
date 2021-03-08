@@ -47,7 +47,6 @@ const Listings = styled.div`
 // `;
 const Card = styled.div`
   display: grid;
-  place-content: center;
   padding: 1rem;
   border-radius: 35px;
   border: 1px solid #ccc;
@@ -56,39 +55,41 @@ const Card = styled.div`
 const Products = (props) => {
   const { cart, addToCart } = useCart();
   return (
-    <>
-      <Container>
-        <Banner>
-          <div>breadcrumbs</div>
-          <h2>Products</h2>
-          <div>Showing results</div>
-        </Banner>
-        <Listings>
-          {props.products.map((product) => (
-            <Card key={product.slug}>
+    <Container>
+      <Banner>
+        <div>Home / Products</div>
+        <h2>Products</h2>
+        <div>Showing results</div>
+      </Banner>
+      <Listings>
+        {props.products.map((product) => (
+          <Card key={product.slug}>
+            <div style={{ position: "relative", paddingTop: "100%" }}>
               {product.image && (
                 <Link href={product.slug}>
                   <a>
                     <Image
                       src={product.image}
                       alt={product.name}
-                      width={350}
-                      height={350}
+                      layout="fill"
+                      objectFit="cover"
                     />
                   </a>
                 </Link>
               )}
+            </div>
+            <div>
               <Link href={product.slug}>
                 <a>{product.name}</a>
               </Link>
               <div>{product.description}</div>
               <div>${product.price / 100}</div>
               <button onClick={() => addToCart(product)}>Add to cart</button>
-            </Card>
-          ))}
-        </Listings>
-      </Container>
-    </>
+            </div>
+          </Card>
+        ))}
+      </Listings>
+    </Container>
   );
 };
 export const getStaticProps = async () => {

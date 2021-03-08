@@ -5,7 +5,9 @@ import useOutsideClick from "../hooks/useOutsideClick";
 const UnstyledLink = styled.a`
   text-decoration: none;
   color: inherit;
-  margin: 0 1rem;
+  @media (min-width: 768px) {
+    margin: 0 1rem;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -17,8 +19,9 @@ const NavItemsUl = styled.ul`
   list-style: none;
   font-weight: 500;
   @media (max-width: 767px) {
+    padding: 1rem;
     position: fixed;
-    left: -100%;
+    left: ${(props) => (props.isNavOpen ? "0" : "-100%")};
     top: 0;
     bottom: 0;
     width: 60vw;
@@ -26,8 +29,7 @@ const NavItemsUl = styled.ul`
     justify-content: start;
     background-color: red;
     margin: 0;
-    transform: translateX(${(props) => (props.isNavOpen ? "161%" : "0")});
-    transition: transform 0.2s ease-in;
+    transition: left 0.3s ease-in;
     z-index: 1;
   }
 `;
@@ -47,7 +49,9 @@ const CloseNavButton = styled.button`
   }
 `;
 const NavItem = styled.li`
-  padding: 0.25rem 0.75rem;
+  @media (min-width: 768px) {
+    padding: 0.25rem 0.75rem;
+  }
 `;
 const NavItems = (props) => {
   const ref = useRef();

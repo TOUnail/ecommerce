@@ -3,7 +3,7 @@ id: 1
 name: Product 1
 description: Description of Product 1
 price: 1999
-image: /paracord-striped.jpg
+image: /paracord.jpg
 category: striped
 ---
 

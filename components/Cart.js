@@ -15,6 +15,7 @@ const Container = styled.div`
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transform: translateX(${(props) => (props.isOpen ? "0" : "100%")});
   transition: transform 0.2s ease-in;
+  z-index: 2;
   @media (min-width: 768px) {
     width: 40vw;
   }

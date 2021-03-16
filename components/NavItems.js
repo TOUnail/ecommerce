@@ -30,7 +30,7 @@ const NavItemsUl = styled.ul`
     background-color: red;
     margin: 0;
     transition: left 0.3s ease-in;
-    z-index: 1;
+    z-index: 3;
   }
 `;
 const CloseNavButtonListItem = styled.li`

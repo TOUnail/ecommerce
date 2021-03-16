@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import CartProvider from "../context/Cart";
 import Cart from "../components/Cart";
 // https://iconduck.com/
-
+//https://tympanus.net/codrops/2019/09/03/how-to-dynamically-change-the-colors-of-product-images-using-css-blend-mode-and-svg/
 const Container = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;

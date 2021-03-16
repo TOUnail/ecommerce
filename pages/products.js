@@ -53,7 +53,7 @@ const Card = styled.div`
   background-color: #fff;
 `;
 const Products = (props) => {
-  const { cart, addToCart } = useCart();
+  const { addToCart } = useCart();
   return (
     <Container>
       <Banner>
